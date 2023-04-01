@@ -4,6 +4,7 @@ const initialState = {
   colors: ["RD", "BL", "YL", "OR", "GR", "SV", null],
   minCarCount: 0,
   maxCarCount: 10,
+  undefinedCarCount: true,
   serviceTypes: ["NoPassengers", "Normal", "Special", "Unknown"],
 }
 
@@ -30,11 +31,14 @@ const sortSlice = createSlice({
     },
     setMaxCarCount: (state, action) => {
       state.maxCarCount = action.payload;
+    },
+    toggleUndefinedCarCount: (state) => {
+      state.undefinedCarCount = !state.undefinedCarCount;
     }
   }
 }
 )
 
-export const { setMinCarCount, setMaxCarCount, toggleColor, toggleServiceTypes } = sortSlice.actions
+export const { setMinCarCount, setMaxCarCount, toggleColor, toggleServiceTypes, toggleUndefinedCarCount } = sortSlice.actions
 
 export default sortSlice.reducer;

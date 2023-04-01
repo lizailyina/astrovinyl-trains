@@ -5,7 +5,7 @@ import { MdOutlineAirlineSeatReclineNormal, MdMiscellaneousServices } from 'reac
 import { FaUsersSlash } from 'react-icons/fa'
 import { BsFillQuestionCircleFill } from 'react-icons/bs'
 import { useDispatch, useSelector } from 'react-redux'
-import { setMinCarCount, setMaxCarCount, toggleColor, toggleServiceTypes } from '../redux/slices/sort'
+import { setMinCarCount, setMaxCarCount, toggleColor, toggleServiceTypes, toggleUndefinedCarCount } from '../redux/slices/sort'
 
 const checkoxColors = [
   "RD",
@@ -36,7 +36,7 @@ const Sort = () => {
 
   const dispatch = useDispatch();
 
-  const { colors, minCarCount, maxCarCount, serviceTypes } = useSelector((state) => state.sort);
+  const { colors, minCarCount, maxCarCount, serviceTypes, undefinedCarCount } = useSelector((state) => state.sort);
 
   const [open, setOpen] = React.useState(false);
 
@@ -86,7 +86,7 @@ const Sort = () => {
             <div className="section">
               <h3>Car Count: </h3>
               <div className="popup-flex">
-                <div style={{ display: "flex", alignItems: "center" }}>
+                <div className='item'>
                   <label htmlFor="min">
                     {minCarCount}
                   </label>
@@ -100,7 +100,7 @@ const Sort = () => {
                       dispatch(setMinCarCount(Math.min(e.target.value, maxCarCount)))} />
                 </div>
                 <h4>to</h4>
-                <div style={{ display: "flex", alignItems: "center" }}>
+                <div className='item'>
                   <label htmlFor="max">
                     {maxCarCount}
                   </label>
@@ -113,6 +113,15 @@ const Sort = () => {
                     onChange={(e) =>
                       dispatch(setMaxCarCount(Math.max(e.target.value, minCarCount)))} />
                 </div>
+              </div>
+              <div className='item' style={{ marginTop: "10px" }}>
+                <label htmlFor="undefinedCarCount">Include trains with unavailible info</label>
+                <input
+                  type="checkbox"
+                  id="undefinedCarCount"
+                  checked={undefinedCarCount}
+                  onChange={() => dispatch(toggleUndefinedCarCount())}
+                />
               </div>
             </div>
           </div>

@@ -1,5 +1,13 @@
 body {
   background-color: #9fa9f1;
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
+    font-weight: 300;
+  }
 }
 
 .wrapper {
@@ -59,6 +67,10 @@ body {
             width: 20px;
           }
 
+          input[type="range"] {
+            width: 100%;
+          }
+
           .item {
             display: flex;
             align-items: center;
@@ -88,8 +100,14 @@ body {
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 
       .logo {
-        border-right: 2px solid black;
-        padding-right: 5px;
+        display: flex;
+        align-items: center;
+        margin-right: 30px;
+
+        &-icon {
+          border-right: 2px solid black;
+          padding-right: 5px;
+        }
       }
 
       .info {
@@ -98,7 +116,20 @@ body {
         align-items: center;
         justify-content: space-between;
 
+        .stations {
+          font-weight: 200 !important;
+        }
+
+        .start {
+          justify-content: flex-start;
+        }
+
+        .end {
+          justify-content: flex-end;
+        }
+
         .item {
+
           display: flex;
           align-items: center;
           gap: 10px;
