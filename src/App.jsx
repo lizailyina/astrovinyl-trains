@@ -31,7 +31,7 @@ function App() {
         <div className="content">
           {
             trains.map((obj) =>
-              <Card {...obj} />
+              <Card {...obj} key={obj.TrainId} />
             )
           }
         </div>

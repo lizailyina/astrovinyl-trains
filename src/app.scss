@@ -1,5 +1,5 @@
 body {
-  background-color: #c8e17e;
+  background-color: #9fa9f1;
 }
 
 .wrapper {
@@ -21,6 +21,53 @@ body {
       gap: 10px;
       justify-content: space-between;
       align-items: center;
+
+      .popup {
+        z-index: 5;
+        background-color: #fff;
+        position: absolute;
+        top: 110px;
+        right: 100px;
+        border: 1px solid black;
+        height: 250px;
+        width: 600px;
+
+
+        &-content {
+          display: flex;
+          justify-content: space-between;
+          margin: 0 30px;
+        }
+
+        &-grid {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 20px;
+        }
+
+        &-flex {
+          gap: 10px;
+          display: flex;
+          flex-direction: column;
+        }
+
+        .section {
+          padding: 0px 10px;
+
+          input[type="checkbox"] {
+            height: 20px;
+            width: 20px;
+          }
+
+          .item {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+
+          }
+        }
+
+      }
     }
   }
 
@@ -75,7 +122,11 @@ body {
   }
 }
 
-h2 {
+h1,
+h2,
+h4,
+h5,
+p {
   margin: 5px;
 }
 
@@ -101,4 +152,39 @@ h2 {
 
 .SV {
   background-color: #bababa;
+}
+
+.RD-sh {
+  accent-color: #f3c2c2;
+  box-shadow: 0 0 10px 10px #f3c2c2;
+}
+
+.BL-sh {
+  accent-color: #b4fff8;
+  box-shadow: 0 0 10px 10px #b4fff8;
+}
+
+.YL-sh {
+  accent-color: #fff78c;
+  box-shadow: 0 0 10px 10px #fff78c;
+}
+
+.OR-sh {
+  accent-color: #ffcc88;
+  box-shadow: 0 0 10px 10px #ffcc88;
+}
+
+.GR-sh {
+  accent-color: #b6ffc1;
+  box-shadow: 0 0 10px 10px #b6ffc1;
+}
+
+.SV-sh {
+  accent-color: #bababa;
+  box-shadow: 0 0 10px 10px #bababa;
+}
+
+.WH-sh {
+  accent-color: #f6f4f4;
+  box-shadow: 0 0 10px 10px #f6f4f4;
 }
