@@ -7,7 +7,7 @@ const NotFound = () => {
     <div className='not-found'>
       <img src={IMG} alt="" />
       <h1> Sorry, no trains found <TfiFaceSad /></h1>
-      <p> Please try to change your filter settings. </p>
+      <p> Please, try to change your filter settings. </p>
     </div>
   )
 }

@@ -12,7 +12,7 @@ import { FaSubway } from 'react-icons/fa'
 export const stationName = new Map();
 export const prevStation = Array(10000);
 export const nextStation = Array(10000);
-export const trackId = Array(1000);
+export const isStation = Array(10000);
 
 function App() {
 
@@ -38,7 +38,10 @@ function App() {
         let lastStation = null;
         for (let i = 0; i < routeLength; ++i) {
           const currentCircuit = sortedTrackCircuits[i];
-          if (currentCircuit.StationCode) lastStation = currentCircuit.StationCode;
+          if (currentCircuit.StationCode) {
+            lastStation = currentCircuit.StationCode;
+            isStation[currentCircuit.CircuitId] = currentCircuit.StationCode;
+          }
           prevStation[currentCircuit.CircuitId] = lastStation;
         }
         lastStation = null;

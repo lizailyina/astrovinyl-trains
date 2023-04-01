@@ -5,7 +5,7 @@ import { FaUsersSlash } from 'react-icons/fa'
 import { BsFillQuestionCircleFill } from 'react-icons/bs'
 import { IoIosArrowRoundForward } from 'react-icons/io'
 import { BsDashLg } from 'react-icons/bs'
-import { prevStation, nextStation, stationName } from '../App'
+import { prevStation, nextStation, stationName, isStation } from '../App'
 
 
 const Card = ({
@@ -30,6 +30,14 @@ const Card = ({
         <h2>
           {TrainId}
         </h2>
+        <div>
+          {
+            (isStation[CircuitId] && nextStation[CircuitId]) ?
+              <h2><b>BOARDING</b></h2>
+              :
+              <h2 style={{ width: "109px", margin: "5 px", padding: "0" }}><b>ON TRACK</b></h2>
+          }
+        </div>
       </div>
       <div className="info">
         <div className="item start stations">
@@ -37,17 +45,25 @@ const Card = ({
             (!prevStation[CircuitId] && !nextStation[CircuitId]) ?
               (
                 <h2> <b>Train Position Info Currently Unavailible </b></h2>
-              ) : (<>
-                <h2>
-                  {stationName[prevStation[CircuitId]] || "DEPOT"}
-                </h2>
-                <BsDashLg size={30} />
-                <TbTrain size={30} />
-                <IoIosArrowRoundForward size={30} />
-                <h2>
-                  {stationName[nextStation[CircuitId]] || "DEPOT"}
-                </h2>
-              </>
+              ) : (
+                <>
+                  <h2>
+                    {(stationName[prevStation[CircuitId]] || <b>DEPOT</b>)}
+                  </h2>
+                  {
+                    !(isStation[CircuitId] && nextStation[CircuitId]) &&
+                    <BsDashLg size={30} />
+                  }
+
+                  <TbTrain size={30} />
+                  {
+                    !(isStation[CircuitId] && nextStation[CircuitId]) &&
+                    <IoIosArrowRoundForward size={30} />
+                  }
+                  <h2>
+                    {stationName[nextStation[CircuitId]] || <b>DEPOT</b>}
+                  </h2>
+                </>
               )
           }
         </div>
@@ -72,7 +88,7 @@ const Card = ({
           }
         </div>
       </div>
-    </div>
+    </div >
   )
 }
 
