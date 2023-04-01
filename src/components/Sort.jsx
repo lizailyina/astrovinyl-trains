@@ -39,9 +39,22 @@ const Sort = () => {
   const { colors, minCarCount, maxCarCount, serviceTypes, undefinedCarCount } = useSelector((state) => state.sort);
 
   const [open, setOpen] = React.useState(false);
+  const sortRef = React.useRef(null);
+
+  React.useEffect(() => {
+    const handleClick = (e) => {
+      if (sortRef.current !== null && !e.composedPath().includes(sortRef.current)) {
+        setOpen(false);
+      }
+    }
+
+    document.addEventListener('click', handleClick);
+
+    return () => document.removeEventListener('click', handleClick);
+  }, [])
 
   return (
-    <div className='sort'>
+    <div className='sort' ref={sortRef}>
       <div style={{ display: "flex", alignItems: "center" }} onClick={() => setOpen(true)} >
         <h2>Filter</h2>
         <AiFillFilter size={24} onClick={() => setOpen(true)} />

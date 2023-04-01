@@ -1,11 +1,11 @@
 import React from 'react'
-import { TbRectangle } from 'react-icons/tb'
+import { TbRectangle, TbTrain } from 'react-icons/tb'
 import { MdOutlineAirlineSeatReclineNormal, MdMiscellaneousServices } from 'react-icons/md'
-import { FaUsersSlash, FaSubway } from 'react-icons/fa'
+import { FaUsersSlash } from 'react-icons/fa'
 import { BsFillQuestionCircleFill } from 'react-icons/bs'
 import { IoIosArrowRoundForward } from 'react-icons/io'
 import { BsDashLg } from 'react-icons/bs'
-import { prevStation, nextStation, stationName, trackId } from '../App'
+import { prevStation, nextStation, stationName } from '../App'
 
 
 const Card = ({
@@ -28,7 +28,7 @@ const Card = ({
           }
         </div>
         <h2>
-          {`ID:${TrainId}`}
+          {TrainId}
         </h2>
       </div>
       <div className="info">
@@ -42,7 +42,7 @@ const Card = ({
                   {stationName[prevStation[CircuitId]] || "DEPOT"}
                 </h2>
                 <BsDashLg size={30} />
-                <FaSubway size={20} />
+                <TbTrain size={30} />
                 <IoIosArrowRoundForward size={30} />
                 <h2>
                   {stationName[nextStation[CircuitId]] || "DEPOT"}
@@ -67,7 +67,7 @@ const Card = ({
                 </h2>
               </>
             ) : (
-              <h2>Car Info Unavailible</h2>
+              <h2><b>Car Info Unavailible</b></h2>
             )
           }
         </div>

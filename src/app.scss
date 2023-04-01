@@ -1,12 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&family=Roboto+Condensed:wght@300;400;700&display=swap');
+
 body {
-  background-color: #9fa9f1;
+  background-color: #00093c;
+
+  font-family: 'Roboto Condensed', sans-serif;
 
   h1,
   h2,
   h3,
   h4,
   h5 {
-    font-weight: 300;
+    font-weight: 400;
   }
 }
 
@@ -23,6 +27,13 @@ body {
     padding-top: 20px;
     padding-left: 30px;
     padding-right: 30px;
+
+    h1 {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 50px;
+    }
 
     .sort {
       display: flex;
@@ -108,6 +119,11 @@ body {
           border-right: 2px solid black;
           padding-right: 5px;
         }
+
+        h2 {
+          border-right: 2px solid black;
+          padding-right: 5px;
+        }
       }
 
       .info {
@@ -153,6 +169,30 @@ body {
   }
 }
 
+.not-found {
+
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  h1 {
+    font-weight: 400;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  p {
+    font-size: large;
+    color: #5b5b5b;
+  }
+
+  img {
+    width: 500px;
+  }
+
+}
+
 h1,
 h2,
 h4,
@@ -162,23 +202,23 @@ p {
 }
 
 .RD {
-  background-color: #f3c2c2;
+  background-color: #df6666;
 }
 
 .BL {
-  background-color: #b4fff8;
+  background-color: #2697fd;
 }
 
 .YL {
-  background-color: #fff78c;
+  background-color: #fbf631;
 }
 
 .OR {
-  background-color: #ffcc88;
+  background-color: #ffa656;
 }
 
 .GR {
-  background-color: #b6ffc1;
+  background-color: #3fbb48;
 }
 
 .SV {
@@ -186,28 +226,28 @@ p {
 }
 
 .RD-sh {
-  accent-color: #f3c2c2;
-  box-shadow: 0 0 10px 10px #f3c2c2;
+  accent-color: #df6666;
+  box-shadow: 0 0 10px 10px #df6666;
 }
 
 .BL-sh {
-  accent-color: #b4fff8;
-  box-shadow: 0 0 10px 10px #b4fff8;
+  accent-color: #2697fd;
+  box-shadow: 0 0 10px 10px #2697fd;
 }
 
 .YL-sh {
-  accent-color: #fff78c;
-  box-shadow: 0 0 10px 10px #fff78c;
+  accent-color: #fbf631;
+  box-shadow: 0 0 10px 10px #fbf631;
 }
 
 .OR-sh {
-  accent-color: #ffcc88;
-  box-shadow: 0 0 10px 10px #ffcc88;
+  accent-color: #ffa656;
+  box-shadow: 0 0 10px 10px #ffa656;
 }
 
 .GR-sh {
-  accent-color: #b6ffc1;
-  box-shadow: 0 0 10px 10px #b6ffc1;
+  accent-color: #3fbb48;
+  box-shadow: 0 0 10px 10px #3fbb48;
 }
 
 .SV-sh {
