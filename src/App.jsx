@@ -86,7 +86,7 @@ function App() {
     <div className="wrapper">
       <div className="container">
         <div className="header">
-          <h1> <FaSubway /> Train Positions</h1>
+          <h1> <FaSubway className="header-logo" /> Train Positions</h1>
           <Sort />
         </div>
         <div className="content">
