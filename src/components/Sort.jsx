@@ -57,7 +57,7 @@ const Sort = () => {
     <div className='sort' ref={sortRef}>
       <div style={{ display: "flex", alignItems: "center" }} onClick={() => setOpen(true)} >
         <h2>Filter</h2>
-        <AiFillFilter size={24} onClick={() => setOpen(true)} />
+        <AiFillFilter style={{ cursor: "pointer" }} size={24} onClick={() => setOpen(true)} />
       </div>
       {
         open &&
