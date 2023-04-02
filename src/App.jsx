@@ -12,9 +12,9 @@ import { fetchTrains } from './redux/slices/trainSlice.js'
 
 
 export const stationName = new Map();
-export let prevStation = [];
-export let nextStation = [];
-export let isStation = [];
+export const prevStation = Array(10000);
+export const nextStation = Array(10000);
+export const isStation = Array(10000);
 
 function App() {
 
@@ -35,9 +35,6 @@ function App() {
         const routeLength = routeEl.TrackCircuits.length;
         const sortedTrackCircuits = routeEl.TrackCircuits.sort((a, b) => routeEl.TrackNum === 1 ? (a.SeqNum - b.SeqNum) : (b.SeqNum - a.SeqNum));
         let lastStation = null;
-        prevStation = Array(10000);
-        nextStation = Array(10000);
-        isStation = Array(10000);
         for (let i = 0; i < routeLength; ++i) {
           const currentCircuit = sortedTrackCircuits[i];
           if (currentCircuit.StationCode) {
