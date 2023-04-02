@@ -5,7 +5,7 @@ import { MdOutlineAirlineSeatReclineNormal, MdMiscellaneousServices } from 'reac
 import { FaUsersSlash } from 'react-icons/fa'
 import { BsFillQuestionCircleFill } from 'react-icons/bs'
 import { useDispatch, useSelector } from 'react-redux'
-import { setMinCarCount, setMaxCarCount, toggleColor, toggleServiceTypes, toggleUndefinedCarCount } from '../redux/slices/sort'
+import { setMinCarCount, setMaxCarCount, toggleColor, toggleServiceTypes, toggleUndefinedCarCount } from '../redux/slices/sortSlice.js'
 
 const checkoxColors = [
   "RD",

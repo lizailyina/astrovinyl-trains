@@ -3,10 +3,12 @@ import React from "react"
 import axios from "./axios.js"
 import Card from "./components/Card.jsx"
 import Sort from './components/Sort.jsx'
-import { useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import NotFound from "./components/NotFound"
 import ReactLoading from "react-loading";
 import { FaSubway } from 'react-icons/fa'
+import { fetchTrains } from './redux/slices/trainSlice.js'
+
 
 
 export const stationName = new Map();
@@ -16,25 +18,22 @@ export const isStation = Array(10000);
 
 function App() {
 
-  const [trains, setTrains] = React.useState([]);
+  const trains = useSelector((state) => state.trains.items);
+  const { colors, minCarCount, maxCarCount, serviceTypes, undefinedCarCount } = useSelector((state) => state.sort);
+
   const [filteredTrains, setFilteredTrains] = React.useState([]);
+  const dispatch = useDispatch();
 
   React.useEffect(() => {
     const interval = setInterval(() => {
-      fetchData();
+      dispatch(fetchTrains());
     }, 10000);
-    const fetchData = async () => {
-      const { data } = await axios.get("https://api.wmata.com/TrainPositions/TrainPositions?contentType=json");
-
-      setTrains(data.TrainPositions);
-    }
 
     const fetchRoutes = async () => {
       const { data } = await axios.get("https://api.wmata.com/TrainPositions/StandardRoutes?contentType=json");
       data.StandardRoutes.forEach((routeEl) => {
         const routeLength = routeEl.TrackCircuits.length;
         const sortedTrackCircuits = routeEl.TrackCircuits.sort((a, b) => routeEl.TrackNum === 1 ? (a.SeqNum - b.SeqNum) : (b.SeqNum - a.SeqNum));
-        console.log(routeEl.TrackNum, sortedTrackCircuits);
         let lastStation = null;
         for (let i = 0; i < routeLength; ++i) {
           const currentCircuit = sortedTrackCircuits[i];
@@ -62,15 +61,14 @@ function App() {
 
     const fetchAll = async () => {
       await Promise.all([fetchRoutes(), fetchStationNames()]);
-      fetchData();
+      dispatch(fetchTrains());
     }
 
     fetchAll();
 
     return () => clearInterval(interval);
-  }, [])
+  }, [dispatch])
 
-  const { colors, minCarCount, maxCarCount, serviceTypes, undefinedCarCount } = useSelector((state) => state.sort);
 
   React.useEffect(() => {
     setFilteredTrains(trains.filter((obj) =>

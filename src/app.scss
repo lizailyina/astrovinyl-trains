@@ -2,7 +2,6 @@
 
 body {
   background-color: #00093c;
-
   font-family: 'Roboto Condensed', sans-serif;
 
   h1,
@@ -11,6 +10,7 @@ body {
   h4,
   h5 {
     font-weight: 400;
+    margin: 5px;
   }
 }
 
@@ -31,7 +31,7 @@ body {
     h1 {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 15px;
       font-size: 50px;
     }
 
@@ -71,7 +71,7 @@ body {
         }
 
         .section {
-          padding: 0px 10px;
+          padding: 15px 10px;
 
           input[type="checkbox"] {
             height: 20px;
@@ -132,10 +132,6 @@ body {
         align-items: center;
         justify-content: space-between;
 
-        .stations {
-          font-weight: 200 !important;
-        }
-
         .start {
           justify-content: flex-start;
         }
@@ -159,7 +155,7 @@ body {
 
       &:hover {
         transform: translateY(-1px);
-        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.7);
       }
     }
   }
@@ -170,9 +166,12 @@ body {
   display: flex;
   align-items: center;
   flex-direction: column;
+  margin-bottom: 80px;
+
 
   h1 {
-    font-weight: 400;
+    margin-top: 30px;
+    font-weight: 450;
     display: flex;
     align-items: center;
     gap: 20px;
@@ -185,16 +184,10 @@ body {
 
   img {
     width: 500px;
+    border-radius: 50%;
+    background-color: #f6f4f4;
   }
 
-}
-
-h1,
-h2,
-h4,
-h5,
-p {
-  margin: 5px;
 }
 
 .RD {
