@@ -3,7 +3,7 @@ import { AiFillFilter } from 'react-icons/ai'
 import { IoIosClose } from 'react-icons/io'
 import { MdOutlineAirlineSeatReclineNormal, MdMiscellaneousServices } from 'react-icons/md'
 import { FaUsersSlash } from 'react-icons/fa'
-import { BsFillQuestionCircleFill } from 'react-icons/bs'
+import { BsFillQuestionCircleFill, BsArrowDownRight } from 'react-icons/bs'
 import { useDispatch, useSelector } from 'react-redux'
 import { setMinCarCount, setMaxCarCount, toggleColor, toggleServiceTypes, toggleUndefinedCarCount } from '../redux/slices/sortSlice.js'
 
@@ -24,7 +24,7 @@ const services = [
   "Unknown"
 ]
 
-const getIcon = (name) => {
+export const getIcon = (name) => {
   if (name === "NoPassengers") return <FaUsersSlash size={30} />;
   if (name === "Normal") return <MdOutlineAirlineSeatReclineNormal size={30} />;
   if (name === "Special") return <MdMiscellaneousServices size={30} />;
@@ -112,7 +112,9 @@ const Sort = () => {
                     onChange={(e) =>
                       dispatch(setMinCarCount(Math.min(e.target.value, maxCarCount)))} />
                 </div>
-                <h4>to</h4>
+                <h3 style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
+                  to <BsArrowDownRight size={20} />
+                </h3>
                 <div className='item'>
                   <label htmlFor="max">
                     {maxCarCount}
@@ -128,7 +130,7 @@ const Sort = () => {
                 </div>
               </div>
               <div className='item' style={{ marginTop: "10px" }}>
-                <label htmlFor="undefinedCarCount">Include trains with unavailible info</label>
+                <label htmlFor="undefinedCarCount">Include trains with unavailible car info</label>
                 <input
                   type="checkbox"
                   id="undefinedCarCount"

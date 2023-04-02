@@ -1,11 +1,9 @@
 import React from 'react'
 import { TbRectangle, TbTrain } from 'react-icons/tb'
-import { MdOutlineAirlineSeatReclineNormal, MdMiscellaneousServices } from 'react-icons/md'
-import { FaUsersSlash } from 'react-icons/fa'
-import { BsFillQuestionCircleFill } from 'react-icons/bs'
 import { IoIosArrowRoundForward } from 'react-icons/io'
 import { BsDashLg } from 'react-icons/bs'
 import { prevStation, nextStation, stationName, isStation } from '../App'
+import { getIcon } from './Sort'
 
 
 const Card = ({
@@ -16,15 +14,14 @@ const Card = ({
   CircuitId
 }) => {
 
+  const isBoarding = () => (isStation[CircuitId] && nextStation[CircuitId] && ServiceType === "Normal");
+
   return (
     <div className={`card ${LineCode}`}>
       <div className="logo">
         <div className="logo-icon">
           {
-            (ServiceType === "Normal" && <MdOutlineAirlineSeatReclineNormal size={30} />) ||
-            (ServiceType === "Special" && <MdMiscellaneousServices size={30} />) ||
-            (ServiceType === "Unknown" && <BsFillQuestionCircleFill size={30} />) ||
-            (ServiceType === "NoPassengers" && <FaUsersSlash size={30} />)
+            getIcon(ServiceType)
           }
         </div>
         <h2>
@@ -32,7 +29,7 @@ const Card = ({
         </h2>
         <div>
           {
-            (isStation[CircuitId] && nextStation[CircuitId]) ?
+            isBoarding() ?
               <h2><b>BOARDING</b></h2>
               :
               <h2 style={{ width: "109px", margin: "5 px", padding: "0" }}><b>ON TRACK</b></h2>
@@ -51,13 +48,12 @@ const Card = ({
                     {(stationName[prevStation[CircuitId]] || <b>DEPOT</b>)}
                   </h2>
                   {
-                    !(isStation[CircuitId] && nextStation[CircuitId]) &&
+                    !isBoarding() &&
                     <BsDashLg size={30} />
                   }
-
                   <TbTrain size={30} />
                   {
-                    !(isStation[CircuitId] && nextStation[CircuitId]) &&
+                    !isBoarding() &&
                     <IoIosArrowRoundForward size={30} />
                   }
                   <h2>
@@ -73,7 +69,7 @@ const Card = ({
               <>
                 <div className='cars'>
                   {
-                    [...Array(CarCount)].map((element, index) =>
+                    [...Array(CarCount)].map((_, index) =>
                       <TbRectangle size={30} key={index} />
                     )
                   }

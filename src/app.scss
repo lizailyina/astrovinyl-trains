@@ -59,9 +59,12 @@ body {
         }
 
         &-grid {
+          margin-top: 20px;
           display: grid;
           grid-template-columns: repeat(2, 1fr);
           gap: 20px;
+
+
         }
 
         &-flex {
@@ -72,6 +75,10 @@ body {
 
         .section {
           padding: 15px 10px;
+
+          h3 {
+            font-size: 20px;
+          }
 
           input[type="checkbox"] {
             height: 20px;
@@ -86,6 +93,10 @@ body {
             display: flex;
             align-items: center;
             justify-content: flex-start;
+
+            label {
+              max-width: 120px;
+            }
 
           }
         }
